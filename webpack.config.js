@@ -1,4 +1,5 @@
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const { SourceMapDevToolPlugin } = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
@@ -10,14 +11,21 @@ module.exports = {
             test: /\.scss$/,
             use: [
                 MiniCssExtractPlugin.loader,
-                'css-loader',
-                'sass-loader'
+                {
+                    loader: 'css-loader',
+                    options: { sourceMap: true }
+                },
+                {
+                    loader: 'sass-loader',
+                    options: { sourceMap: true }
+                }
             ]
         }]
     },
 
     plugins: [
         new CleanWebpackPlugin(['dist']),
+        new SourceMapDevToolPlugin({ filename: '[file].map' }),
         new MiniCssExtractPlugin({}),
     ]
 }
