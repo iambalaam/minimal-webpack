@@ -1,0 +1,16 @@
+{
+  "name": "minimal-webpack",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/iambalaam/minimal-webpack.git",
+  "author": "Guy Balaam <guybal@amazon.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "webpack"
+  },
+  "dependencies": {
+    "clean-webpack-plugin": "^1.0.0",
+    "webpack": "^4.28.4",
+    "webpack-cli": "^3.2.1"
+  }
+}
