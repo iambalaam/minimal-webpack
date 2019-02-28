@@ -1,6 +1,9 @@
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 const { SourceMapDevToolPlugin } = require('webpack');
+const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
+
 
 module.exports = {
     mode: 'production',
@@ -26,6 +29,19 @@ module.exports = {
     plugins: [
         new CleanWebpackPlugin(['dist']),
         new SourceMapDevToolPlugin({ filename: '[file].map' }),
-        new MiniCssExtractPlugin({}),
-    ]
+        new MiniCssExtractPlugin({})
+    ],
+
+    optimization: {
+        minimizer: [
+            new UglifyJsPlugin({
+                sourceMap: true
+            }),
+            new OptimizeCSSAssetsPlugin({
+                cssProcessorOptions: {
+                    map: { inline: false }
+                }
+            })
+        ]
+    }
 }
