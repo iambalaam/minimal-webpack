@@ -39,7 +39,7 @@ module.exports = {
             }),
             new OptimizeCSSAssetsPlugin({
                 cssProcessorOptions: {
-                    map: { inline: false }
+                    map: { inline: false, annotation: true }
                 }
             })
         ]
